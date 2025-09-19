@@ -86,5 +86,9 @@ public class LectorPostFijo{
         System.out.println(result2);
         double result3 = evaluarPF("392+*8-5/");
         System.out.println(result3);
+        //double result4 = evaluarPF("3+");
+        //double result4 = evaluarPF("3 4 5 +");
+        double result4 = evaluarPF("3 + *");
+
     }
 }

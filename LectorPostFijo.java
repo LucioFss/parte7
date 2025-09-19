@@ -28,6 +28,10 @@ public class LectorPostFijo{
             }
             //Se evalua si el caracter actual es el signo operando "+"
             if(var == '+'){
+                //Comprobación de que a la expresión le falten operandos
+                if(pila.isEmpty() || pila.size() < 2){
+                    throw new IllegalArgumentException("Expresion postfija no valida: Faltan operandos");
+                }
                 double val1 = pila.pop();
                 double  val2 = pila.pop();
                 pila.push(val1 + val2); 
@@ -35,24 +39,43 @@ public class LectorPostFijo{
             }
             //Se evalua si el caracter actual es el signo operando "+"
             if(var == '-'){
+                //Comprobación de que a la expresión le falten operandos
+                if(pila.isEmpty() || pila.size() < 2){
+                    throw new IllegalArgumentException("Expresion postfija no valida: Faltan operandos");
+                }
                 double val1 = pila.pop();
                 double  val2 = pila.pop();
                 pila.push(val2 - val1); 
             }
             //Se evalua si el caracter actual es el signo operando "+"
             if(var == '*'){
+                //Comprobación de que a la expresión le falten operandos
+                if(pila.isEmpty() || pila.size() < 2){
+                    throw new IllegalArgumentException("Expresion postfija no valida: Faltan operandos");
+                }
                 double val1 = pila.pop();
                 double  val2 = pila.pop();
                 pila.push(val1 * val2); 
             }
             //Se evalua si el caracter actual es el signo operando "+"
             if(var == '/'){
+                //Comprobación de que a la expresión le falten operandos
+                if(pila.isEmpty() || pila.size() < 2){
+                    throw new IllegalArgumentException("Expresion postfija no valida: Faltan operandos");
+                }
                 double val1 = pila.pop();
                 double  val2 = pila.pop();
                 pila.push(val2 / val1); 
             }
         }   
-
+        //Comprobación de que en la expresion falten operadores
+        if(pila.size() > 1){
+            throw new IllegalArgumentException("Expresion postfija no valida: Faltan operador");
+        }
+        //Comprobación de que en la pila no haya elementos, lo que signififica que no es una expresion postfija
+        if(pila.isEmpty()){
+            throw new IllegalArgumentException("Expresion postfija no valida");
+        }
         return pila.peek();
     }
 
